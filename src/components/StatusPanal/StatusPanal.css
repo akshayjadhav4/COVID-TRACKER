@@ -1,0 +1,10 @@
+.statusPanal {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 582px) {
+  .statusPanal {
+    flex-direction: column;
+  }
+}
