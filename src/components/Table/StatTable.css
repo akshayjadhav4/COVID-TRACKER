@@ -1,0 +1,10 @@
+.table__container {
+  margin-top: 20px;
+  overflow: scroll;
+  height: 400px;
+}
+
+.MuiTableCell-head {
+  color: rgb(94, 117, 248) !important;
+  font-size: 20px;
+}
