@@ -1,3 +1,6 @@
+.infoBox__card {
+  height: 100%;
+}
 @media (max-width: 990px) {
   .infoBox {
     margin-bottom: 5px;
