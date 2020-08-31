@@ -30,3 +30,19 @@ export const getCountryData = (country) => {
       console.log(err);
     });
 };
+
+// Get the current status of all countries
+export const getAllCountriesData = () => {
+  return fetch("https://covid-193.p.rapidapi.com/statistics", {
+    method: "GET",
+    headers: {
+      "x-rapidapi-host": "covid-193.p.rapidapi.com",
+      "x-rapidapi-key": process.env.REACT_APP_API_KEY,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => data.response)
+    .catch((err) => {
+      console.log(err);
+    });
+};
