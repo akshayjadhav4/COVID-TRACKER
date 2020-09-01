@@ -1,15 +1,32 @@
 .app {
-  display: flex;
-  justify-content: space-evenly;
   padding: 20px;
 }
 
-.app__left {
+.app__middleSection {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.app__lineGraph {
+  width: 100%;
   flex: 0.9;
+  height: 100%;
+}
+
+.app__piechart {
+  display: inline-block;
+  border-bottom: 20px;
 }
 
 @media (max-width: 990px) {
-  .app {
+  .app__middleSection {
     flex-direction: column;
+    align-items: center;
+  }
+  .app__piechart {
+    margin-top: 10px;
   }
 }
