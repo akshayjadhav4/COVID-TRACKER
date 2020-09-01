@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import AppHeader from "./components/AppHeader/AppHeader";
-import { Card, CardContent } from "@material-ui/core";
+import { Card, CardContent, Typography } from "@material-ui/core";
 import {
   getAffectedCountries,
   getCountryData,
@@ -10,6 +10,7 @@ import {
 import StatusPanal from "./components/StatusPanal/StatusPanal";
 import StatTable from "./components/Table/StatTable";
 import { sortTableData } from "./utils/sortTableData";
+import PieChart from "./components/PieChart/PieChart";
 function App() {
   //state to store list of countries affected by the Coronavirus
   const [countries, setCountries] = useState([]);
@@ -54,27 +55,37 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <div className="app__left">
-        {/* AppHeader component with props countries, country, onCountryChange */}
-        <AppHeader
-          countries={countries}
-          country={country}
-          onCountryChange={onCountryChange}
-        />
-        {/* showing cases ,recoverd , deaths status  */}
-        <StatusPanal countryInfo={countryInfo} />
+    <>
+      <div className="app">
+        <div className="app__left">
+          {/* AppHeader component with props countries, country, onCountryChange */}
+          <AppHeader
+            countries={countries}
+            country={country}
+            onCountryChange={onCountryChange}
+          />
+          {/* showing cases ,recoverd , deaths status  */}
+          <StatusPanal countryInfo={countryInfo} />
+        </div>
+        <div className="app__right">
+          <Card>
+            <CardContent>
+              <Typography variant="h6">
+                {country === "all" ? "Worldwide" : country.toUpperCase()}
+              </Typography>
+              <PieChart countryInfo={countryInfo} />
+            </CardContent>
+          </Card>
+        </div>
       </div>
-      <div className="app__right">
-        <Card>
-          <CardContent>
-            <h1>Current status of all countries</h1>
-            {/* showing stats for all counties in table form  */}
-            <StatTable countries={tableData} />
-          </CardContent>
-        </Card>
-      </div>
-    </div>
+      <Card>
+        <CardContent>
+          <h1>Current status of all countries</h1>
+          {/* showing stats for all counties in table form  */}
+          <StatTable countries={tableData} />
+        </CardContent>
+      </Card>
+    </>
   );
 }
 
