@@ -46,3 +46,19 @@ export const getAllCountriesData = () => {
       console.log(err);
     });
 };
+
+// Get the complete historical data around the world
+export const getAllCountriesHistoricalData = (country) => {
+  return fetch(`https://covid-193.p.rapidapi.com/history?country=${country}`, {
+    method: "GET",
+    headers: {
+      "x-rapidapi-host": "covid-193.p.rapidapi.com",
+      "x-rapidapi-key": process.env.REACT_APP_API_KEY,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => data.response)
+    .catch((err) => {
+      console.log(err);
+    });
+};
