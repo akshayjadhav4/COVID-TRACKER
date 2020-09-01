@@ -2,7 +2,7 @@ import React from "react";
 import { Pie } from "react-chartjs-2";
 function PieChart({ countryInfo }) {
   return (
-    <div className="linearGraph">
+    <div className="pieChart">
       <Pie
         data={{
           labels: ["cases", "deaths", "Recovered"],
