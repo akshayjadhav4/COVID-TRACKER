@@ -1,3 +1,22 @@
+.infoBox {
+  flex: 1;
+}
+
+.infoBox:not(:last-child) {
+  margin-right: 10px;
+}
+
+.infoBox__cases {
+  color: #cc1034;
+  font-weight: 600;
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.infoBox__newCases {
+  color: #ce3a55 !important;
+  font-size: 0.9rem !important;
+}
 .infoBox__card {
   height: 100%;
 }

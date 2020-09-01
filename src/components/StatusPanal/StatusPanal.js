@@ -1,22 +1,29 @@
 import React from "react";
 import "./StatusPanal.css";
 import InfoBox from "../InfoBox/InfoBox";
+import { textPretty } from "../../utils/textPretty";
 
 function StatusPanal({ countryInfo }) {
   return (
     <div className="statusPanal">
       <InfoBox
         title="Active Cases"
-        cases={countryInfo.cases?.active}
-        newCases={countryInfo.cases?.new}
+        cases={textPretty(countryInfo.cases?.active)}
+        newCases={textPretty(countryInfo.cases?.new)}
       />
-      <InfoBox title="Total Recoverd" cases={countryInfo.cases?.recovered} />
+      <InfoBox
+        title="Total Recoverd"
+        cases={textPretty(countryInfo.cases?.recovered)}
+      />
       <InfoBox
         title="Total Deaths"
-        cases={countryInfo.deaths?.total}
-        newCases={countryInfo.deaths?.new}
+        cases={textPretty(countryInfo.deaths?.total)}
+        newCases={textPretty(countryInfo.deaths?.new)}
       />
-      <InfoBox title="Total cases" cases={countryInfo.cases?.total} />
+      <InfoBox
+        title="Total cases"
+        cases={textPretty(countryInfo.cases?.total)}
+      />
     </div>
   );
 }
