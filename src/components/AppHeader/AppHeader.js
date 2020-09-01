@@ -9,7 +9,7 @@ export default function AppHeader({ countries, country, onCountryChange }) {
       <FormControl className="app__dropdown">
         <Select variant="outlined" value={country} onChange={onCountryChange}>
           <MenuItem value="all">WorldWide</MenuItem>
-          {countries.map((country, index) => (
+          {countries?.map((country, index) => (
             <MenuItem value={country} key={index}>
               {country}
             </MenuItem>
