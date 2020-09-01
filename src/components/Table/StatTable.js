@@ -6,7 +6,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-
+import numeral from "numeral";
 function StatTable({ countries }) {
   return (
     <div className="table">
@@ -30,12 +30,24 @@ function StatTable({ countries }) {
                   {country.country}
                 </TableCell>
 
-                <TableCell align="right">{country.cases?.active}</TableCell>
-                <TableCell align="right">{country.cases?.critical}</TableCell>
-                <TableCell align="right">{country.cases?.new}</TableCell>
-                <TableCell align="right">{country.cases?.recovered}</TableCell>
-                <TableCell align="right">{country.cases?.total}</TableCell>
-                <TableCell align="right">{country.deaths?.total}</TableCell>
+                <TableCell align="right">
+                  {numeral(country.cases?.active).format("0,0")}
+                </TableCell>
+                <TableCell align="right">
+                  {numeral(country.cases?.critical).format("0,0")}
+                </TableCell>
+                <TableCell align="right">
+                  +{numeral(country.cases?.new).format("0,0")}
+                </TableCell>
+                <TableCell align="right">
+                  {numeral(country.cases?.recovered).format("0,0")}
+                </TableCell>
+                <TableCell align="right">
+                  {numeral(country.cases?.total).format("0,0")}
+                </TableCell>
+                <TableCell align="right">
+                  {numeral(country.deaths?.total).format("0,0")}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
