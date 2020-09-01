@@ -50,7 +50,7 @@ function LineGraph({ country }) {
   }, [country]);
 
   const data = {
-    labels: lineGraphData.slice(0, 120).map((data) => data.day),
+    labels: lineGraphData.map((data) => data.day),
     datasets: [
       {
         label: "Total Cases",
@@ -70,7 +70,7 @@ function LineGraph({ country }) {
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: lineGraphData.slice(0, 120).map((data) => data.cases.total),
+        data: lineGraphData.map((data) => data.cases.total),
       },
     ],
   };
