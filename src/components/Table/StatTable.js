@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./StatTable.css";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -7,7 +7,21 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import numeral from "numeral";
-function StatTable({ countries }) {
+import { sortTableData } from "../../utils/sortTableData";
+import { getAllCountriesData } from "../../api";
+
+function StatTable() {
+  //state for storing table data
+  const [tableData, setTableData] = useState([]);
+
+  // Get the current status of all countries
+  useEffect(() => {
+    //sortTableData() function used to sort data
+    const getCountriesStatus = async () =>
+      setTableData(sortTableData(await getAllCountriesData()));
+    getCountriesStatus();
+  }, []);
+
   return (
     <div className="table">
       <TableContainer className="table__container">
@@ -24,7 +38,7 @@ function StatTable({ countries }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {countries.map((country) => (
+            {tableData.map((country) => (
               <TableRow key={country.country}>
                 <TableCell component="th" scope="row">
                   {country.country}

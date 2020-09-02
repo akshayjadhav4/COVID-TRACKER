@@ -2,14 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import AppHeader from "./components/AppHeader/AppHeader";
 import { Card, CardContent, Grid, CardHeader } from "@material-ui/core";
-import {
-  getAffectedCountries,
-  getCountryData,
-  getAllCountriesData,
-} from "./api";
+import { getAffectedCountries, getCountryData } from "./api";
 import StatusPanal from "./components/StatusPanal/StatusPanal";
 import StatTable from "./components/Table/StatTable";
-import { sortTableData } from "./utils/sortTableData";
 import PieChart from "./components/PieChart/PieChart";
 import LineGraph from "./components/LineGraph/LineGraph";
 function App() {
@@ -21,9 +16,6 @@ function App() {
 
   // state for storing coronavirus status
   const [countryInfo, setCountryInfo] = useState({});
-
-  //state for storing table data
-  const [tableData, setTableData] = useState([]);
 
   // getting list of countries affected by the Coronavirus.
   useEffect(() => {
@@ -37,14 +29,6 @@ function App() {
     const getWorldwideStatus = async () =>
       setCountryInfo(await getCountryData("all"));
     getWorldwideStatus();
-  }, []);
-
-  // Get the current status of all countries
-  useEffect(() => {
-    //sortTableData() function used to sort data
-    const getCountriesStatus = async () =>
-      setTableData(sortTableData(await getAllCountriesData()));
-    getCountriesStatus();
   }, []);
 
   // onChange for dropdown menu
@@ -96,7 +80,7 @@ function App() {
           <CardContent>
             <h1>Current status of all countries</h1>
             {/* showing stats for all counties in table form  */}
-            <StatTable countries={tableData} />
+            <StatTable />
           </CardContent>
         </Card>
       </div>
