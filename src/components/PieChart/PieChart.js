@@ -16,29 +16,28 @@ function PieChart({ countryInfo }) {
       },
     ],
   };
+
+  const options = {
+    responsive: true,
+    tooltips: {
+      mode: "label",
+      callbacks: {
+        label: function (tooltipItem, data) {
+          var indice = tooltipItem.index;
+          return (
+            data.labels[indice] +
+            ": " +
+            numeral(data.datasets[0].data[indice]).format("+0,0") +
+            ""
+          );
+        },
+      },
+    },
+  };
+
   return (
     <div className="pieChart">
-      <Pie
-        data={data}
-        height={250}
-        options={{
-          responsive: true,
-          tooltips: {
-            mode: "label",
-            callbacks: {
-              label: function (tooltipItem, data) {
-                var indice = tooltipItem.index;
-                return (
-                  data.labels[indice] +
-                  ": " +
-                  numeral(data.datasets[0].data[indice]).format("+0,0") +
-                  ""
-                );
-              },
-            },
-          },
-        }}
-      />
+      <Pie data={data} height={250} options={options} />
     </div>
   );
 }
