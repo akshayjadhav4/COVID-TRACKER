@@ -4,7 +4,32 @@
   height: 400px;
 }
 
+/* material ui classes */
 .MuiTableCell-head {
-  color: rgb(94, 117, 248) !important;
-  font-size: 20px;
+  font-weight: bold !important;
+}
+
+/* material ui classes */
+.MuiTableCell-root {
+  font-weight: bold !important;
+}
+
+.MuiTableCell-root:nth-child(n + 2) {
+  color: #ff4467 !important;
+}
+
+.MuiTableCell-root:nth-child(3) {
+  color: #fac42f !important;
+}
+
+.MuiTableCell-root:nth-child(7) {
+  color: #cc1034 !important;
+}
+
+.MuiTableCell-root:nth-child(5) {
+  color: #45ce30 !important;
+}
+
+.MuiTableCell-root:nth-child(6) {
+  color: black !important;
 }
