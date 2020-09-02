@@ -10,7 +10,7 @@ export const getAffectedCountries = () => {
     .then((response) => response.json())
     .then((data) => data.response)
     .catch((err) => {
-      console.log(err);
+      alert(err.message);
     });
 };
 
@@ -27,7 +27,7 @@ export const getCountryData = (country) => {
     .then((response) => response.json())
     .then((data) => data.response[0])
     .catch((err) => {
-      console.log(err);
+      alert(err.message);
     });
 };
 
@@ -43,7 +43,7 @@ export const getAllCountriesData = () => {
     .then((response) => response.json())
     .then((data) => data.response)
     .catch((err) => {
-      console.log(err);
+      alert(err.message);
     });
 };
 
@@ -59,6 +59,6 @@ export const getAllCountriesHistoricalData = (country) => {
     .then((response) => response.json())
     .then((data) => data.response)
     .catch((err) => {
-      console.log(err);
+      alert(err.message);
     });
 };
