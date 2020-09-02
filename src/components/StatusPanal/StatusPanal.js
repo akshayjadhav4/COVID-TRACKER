@@ -20,6 +20,7 @@ function StatusPanal({ countryInfo }) {
         <InfoBox
           title="Total Recoverd"
           cases={textPretty(countryInfo.cases?.recovered)}
+          isGreen // flag to make text green
         />
         <InfoBox
           title="Total Deaths"
