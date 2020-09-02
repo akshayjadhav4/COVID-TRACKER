@@ -18,6 +18,10 @@
   font-size: 0.9rem !important;
 }
 .infoBox__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
   height: 100%;
 }
 @media (max-width: 990px) {
