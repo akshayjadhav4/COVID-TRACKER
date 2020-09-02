@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import AppHeader from "./components/AppHeader/AppHeader";
-import { Card, CardContent } from "@material-ui/core";
+import { Card, CardContent, Grid, CardHeader } from "@material-ui/core";
 import {
   getAffectedCountries,
   getCountryData,
@@ -72,22 +72,25 @@ function App() {
       </div>
 
       <div className="app__middleSection">
-        <div className="app__lineGraph">
-          <Card>
-            <CardContent>
-              <LineGraph country={countryInfo.country} />
-            </CardContent>
-          </Card>
-        </div>
-        <div className="app__piechart">
-          <Card>
-            <CardContent>
-              <h4>Summary of Total Deaths,Active,Recovered</h4>
-              <PieChart countryInfo={countryInfo} />
-            </CardContent>
-          </Card>
-        </div>
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={12} md={8}>
+            <Card className="app__card">
+              <CardContent>
+                <LineGraph country={countryInfo.country} />
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={12} sm={12} md={4}>
+            <Card className="app__card">
+              <CardHeader title="Summary of Total Deaths,Active,Recovered" />
+              <CardContent>
+                <PieChart countryInfo={countryInfo} />
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
       </div>
+
       <div className="app__statsTable">
         <Card>
           <CardContent>
