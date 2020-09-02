@@ -1,0 +1,8 @@
+.lineGraph__loader {
+  display: flex;
+  align-items: center;
+}
+
+.lineGraph__loader > span {
+  margin-left: 10px;
+}

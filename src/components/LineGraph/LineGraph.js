@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+import "./LineGraph.css";
 import { Line } from "react-chartjs-2";
 import { getAllCountriesHistoricalData } from "../../api";
 import numeral from "numeral";
 import CircularProgress from "@material-ui/core/CircularProgress";
+
+//Options for line graph
 const options = {
   legend: {
     display: true,
@@ -18,7 +21,9 @@ const options = {
     intersect: false,
     callbacks: {
       label: function (tooltipItem, data) {
-        return numeral(tooltipItem.value).format("+0,0");
+        return `${data.datasets[tooltipItem.datasetIndex].label} ${numeral(
+          tooltipItem.value
+        ).format("+0,0")}`;
       },
     },
   },
@@ -42,6 +47,18 @@ const options = {
 function LineGraph({ country }) {
   const [lineGraphData, setLineGraphData] = useState([]);
 
+  //dataset for total cases
+  const totalCasesDataset = lineGraphData.map((data) => data.cases.total);
+
+  // dataset for recovered
+  const totalRecoverdDataset = lineGraphData.map(
+    (data) => data.cases.recovered
+  );
+
+  // dataset for deaths
+  const totalDeathsDataset = lineGraphData.map((data) => data.deaths.total);
+
+  //getting all historical data for graph
   useEffect(() => {
     const data = async () => {
       setLineGraphData(await getAllCountriesHistoricalData(country));
@@ -54,23 +71,18 @@ function LineGraph({ country }) {
     datasets: [
       {
         label: "Total Cases",
-        lineTension: 0.1,
-        backgroundColor: "rgba(75,192,192,0.4)",
-        borderColor: "rgba(75,192,192,1)",
-        borderCapStyle: "butt",
-        borderDash: [],
-        borderDashOffset: 0.0,
-        borderJoinStyle: "miter",
-        pointBorderColor: "rgba(75,192,192,1)",
-        pointBackgroundColor: "#fff",
-        pointBorderWidth: 1,
-        pointHoverRadius: 5,
-        pointHoverBackgroundColor: "rgba(75,192,192,1)",
-        pointHoverBorderColor: "rgba(220,220,220,1)",
-        pointHoverBorderWidth: 2,
-        pointRadius: 1,
-        pointHitRadius: 10,
-        data: lineGraphData.map((data) => data.cases.total),
+        borderColor: "#25CCF7",
+        data: totalCasesDataset,
+      },
+      {
+        label: "Total Recoverd",
+        borderColor: "#45CE30",
+        data: totalRecoverdDataset,
+      },
+      {
+        label: "Total Deaths",
+        borderColor: "#FF4848",
+        data: totalDeathsDataset,
       },
     ],
   };
@@ -80,7 +92,10 @@ function LineGraph({ country }) {
       {lineGraphData?.length > 0 ? (
         <Line data={data} options={options} />
       ) : (
-        <CircularProgress />
+        <div className="lineGraph__loader">
+          <CircularProgress />
+          <span>Preparing Graph...</span>
+        </div>
       )}
     </div>
   );
