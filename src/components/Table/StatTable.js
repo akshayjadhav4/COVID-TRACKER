@@ -38,7 +38,7 @@ function StatTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {tableData.map((country) => (
+            {tableData?.map((country) => (
               <TableRow key={country.country}>
                 <TableCell component="th" scope="row">
                   {country.country}

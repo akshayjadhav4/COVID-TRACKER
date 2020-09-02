@@ -48,15 +48,18 @@ function LineGraph({ country }) {
   const [lineGraphData, setLineGraphData] = useState([]);
 
   //dataset for total cases
-  const totalCasesDataset = lineGraphData.map((data) => data.cases.total);
+  const totalCasesDataset = lineGraphData?.map((data) => data.cases.total);
 
   // dataset for recovered
-  const totalRecoverdDataset = lineGraphData.map(
+  const totalRecoverdDataset = lineGraphData?.map(
     (data) => data.cases.recovered
   );
 
   // dataset for deaths
-  const totalDeathsDataset = lineGraphData.map((data) => data.deaths.total);
+  const totalDeathsDataset = lineGraphData?.map((data) => data.deaths.total);
+
+  // labels for graph
+  const labels = lineGraphData?.map((data) => data.day);
 
   //getting all historical data for graph
   useEffect(() => {
@@ -67,7 +70,7 @@ function LineGraph({ country }) {
   }, [country]);
 
   const data = {
-    labels: lineGraphData.map((data) => data.day),
+    labels: labels,
     datasets: [
       {
         label: "Total Cases",
