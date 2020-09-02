@@ -6,7 +6,7 @@ export default function AppHeader({ countries, country, onCountryChange }) {
   return (
     <div className="appHeader">
       <h1>COVID-19 TRACKER</h1>
-      <FormControl className="app__dropdown">
+      <FormControl className="appHeader__dropdown">
         <Select variant="outlined" value={country} onChange={onCountryChange}>
           <MenuItem value="all">WorldWide</MenuItem>
           {countries?.map((country, index) => (
