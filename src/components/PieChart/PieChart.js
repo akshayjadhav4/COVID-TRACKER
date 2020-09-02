@@ -12,7 +12,7 @@ function PieChart({ countryInfo }) {
           countryInfo.deaths?.total,
           countryInfo.cases?.recovered,
         ],
-        backgroundColor: ["#25CCF7", "#FF4848", "#45CE30"],
+        backgroundColor: ["#008FF8", "#FEb019", "#00E396"],
       },
     ],
   };

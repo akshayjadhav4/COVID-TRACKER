@@ -71,17 +71,17 @@ function LineGraph({ country }) {
     datasets: [
       {
         label: "Total Cases",
-        borderColor: "#25CCF7",
+        borderColor: "#008FF8",
         data: totalCasesDataset,
       },
       {
         label: "Total Recoverd",
-        borderColor: "#45CE30",
+        borderColor: "#00E396",
         data: totalRecoverdDataset,
       },
       {
         label: "Total Deaths",
-        borderColor: "#FF4848",
+        borderColor: "#FEb019",
         data: totalDeathsDataset,
       },
     ],
