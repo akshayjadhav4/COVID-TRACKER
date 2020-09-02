@@ -2,6 +2,9 @@
   padding: 20px;
 }
 
+.app__loader {
+  margin-bottom: 5px;
+}
 .app__middleSection {
   margin-top: 20px;
   margin-bottom: 20px;
