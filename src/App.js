@@ -34,13 +34,9 @@ function App() {
 
   //getting worldwide status to show when first time app loads
   useEffect(() => {
-    setLoading(true);
-
     const getWorldwideStatus = async () =>
       setCountryInfo(await getCountryData("all"));
     getWorldwideStatus();
-
-    setLoading(false);
   }, []);
 
   // onChange for dropdown menu
