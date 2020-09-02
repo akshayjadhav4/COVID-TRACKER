@@ -20,9 +20,9 @@ function PieChart({ countryInfo }) {
     <div className="pieChart">
       <Pie
         data={data}
-        height={300}
+        height={250}
         options={{
-          responsive: false,
+          responsive: true,
           tooltips: {
             mode: "label",
             callbacks: {
