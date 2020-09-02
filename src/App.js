@@ -57,13 +57,16 @@ function App() {
 
       <div className="app__middleSection">
         <Grid container spacing={3}>
+          {/* LineGraph */}
           <Grid item xs={12} sm={12} md={8}>
             <Card className="app__card">
+              <CardHeader title=" Coronavirus outbreak trend over time" />
               <CardContent>
                 <LineGraph country={countryInfo.country} />
               </CardContent>
             </Card>
           </Grid>
+          {/* Pie Chart */}
           <Grid item xs={12} sm={12} md={4}>
             <Card className="app__card">
               <CardHeader title="Summary of Total Deaths,Active,Recovered" />
